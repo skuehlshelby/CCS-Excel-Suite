@@ -1,0 +1,39 @@
+Attribute VB_Name = "Main"
+'@Folder("ReportFormatterV")
+Option Explicit
+Public Enum Initiator
+    User = 1
+    App = 2
+    SmartSave = 3
+    JumpTo = 4
+End Enum
+Public Sub CCS_Excel_Suite()
+    Start_CCS_Excel_Suite StartedBy:=User
+End Sub
+Public Sub CCS_Excel_Suite_Change_Settings()
+    With New SetupForm
+        .Show False
+    End With
+End Sub
+Public Sub CCS_Excel_Suite_Jump_To()
+    With New JumpToForm
+        .Show
+    End With
+End Sub
+Public Sub Start_CCS_Excel_Suite(Optional ByVal StartedBy As Initiator = App)
+
+Static RunPreviously As Boolean
+
+If RunPreviously = False Then
+    Globals.InitializeGlobals
+    Setup.PerformSetup
+    RunPreviously = True
+End If
+
+If StartedBy = User Then 'Run report-specific checks
+End If
+
+If StartedBy = User Or StartedBy = App Then 'Remove all leading and trailing spaces from active report
+End If
+
+End Sub
