@@ -1,0 +1,27 @@
+Option Explicit
+
+Private Const MAX_PATH As Byte = 255
+
+Private Type FILETIME
+  dwLowDateTime As Long
+  dwHighDateTime As Long
+End Type
+
+Private Type WIN32_FILE_ATTRIBUTE_DATA
+    dwFileAttributes As Long
+    ftCreationTime As FILETIME
+    ftLastAccessTime As FILETIME
+    ftLastWriteTime As FILETIME
+    nFileSizeHigh As Long
+    nFileSizeLow As Long
+End Type
+
+Private Declare PtrSafe Function GetFileAttributesEx Lib "kernel32" Alias "GetFileAttributesExA" (ByVal lpFileName As String, ByVal fInfoLevelId As LongPtr, wData As WIN32_FILE_ATTRIBUTE_DATA) As Long
+
+Public Sub TestFileAttr()
+    Dim Response As Long
+    Dim w As WIN32_FILE_ATTRIBUTE_DATA
+
+    Response = GetFileAttributesEx("C:\Users\Scott K\Documents\REAPER Media\Riff Everyday 2020\", 0&, w)
+    Stop
+End Sub
