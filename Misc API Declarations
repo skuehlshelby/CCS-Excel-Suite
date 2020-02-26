@@ -1,0 +1,11 @@
+
+Private Declare PtrSafe Function CopyFile Lib "kernel32" Alias "CopyFileA" (ByVal lpExistingFileName As String, ByVal lpNewFileName As String, ByVal bFailIfExists As Long) As Long
+Private Declare PtrSafe Function CreateFile Lib "kernel32" Alias "CreateFileA" (ByVal lpFileName As String, ByVal dwDesiredAccess As Long, ByVal dwShareMode As Long, lpSecurityAttributes As SECURITY_ATTRIBUTES, ByVal dwCreationDisposition As Long, ByVal dwFlagsAn
+Private Declare PtrSafe Function DeleteFile Lib "kernel32" Alias "DeleteFileA" (ByVal lpFileName As String) As Long
+Private Declare PtrSafe Function FindFirstFile Lib "kernel32" Alias "FindFirstFileA" (ByVal lpFileName As String, lpFindFileData As WIN32_FIND_DATA) As LongPtr
+Private Declare PtrSafe Function FindNextFile Lib "kernel32" Alias "FindNextFileA" (ByVal hFindFile As LongPtr, lpFindFileData As WIN32_FIND_DATA) As Long
+Private Declare PtrSafe Function FindClose Lib "kernel32" Alias "FindClose" (ByVal hFindFile As LongPtr) As Long
+Private Declare PtrSafe Function EnumWindows Lib "user32" (ByVal lpEnumFunc As LongPtr, ByVal lParam As LongPtr) As Long
+Private Declare PtrSafe Function EnumChildWindows Lib "user32" Alias "EnumChildWindows" (ByVal hWndParent As LongPtr, ByVal lpEnumFunc As LongPtr, ByVal lParam As LongPtr) As Long
+Private Declare PtrSafe Function GetWindowText Lib "user32" Alias "GetWindowTextA" (ByVal hwnd As LongPtr, ByVal lpString As String, ByVal cch As Long) As Long
+Private Declare PtrSafe Function SetActiveWindow Lib "user32" Alias "SetActiveWindow" (ByVal hwnd As LongPtr) As LongPtr
